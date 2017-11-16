@@ -1,10 +1,7 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
@@ -19,30 +16,19 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
-
-        if (!driver.getTitle().contains("Mail.Ru")) {
-            throw new IllegalStateException("This is not the Mail.ru page");
-        }
-            PageFactory.initElements(this.driver, this);
+        PageFactory.initElements(this.driver, this);
     }
 
-    //log into mailru account
-    public AccPageMain loginIn(String email, String pass){
-
-        //enter email
-        emailField.sendKeys(email);
-        //enter pass
-        passField.sendKeys(pass);
-        //click submit
+    public AccPageMain loginIn(){
+        emailField.sendKeys(DataForTst.getEmail());
+        passField.sendKeys(DataForTst.getPass());
         submitButton.click();
 
         return new AccPageMain(driver);
     }
 
     public boolean checkLoginPage() {
-        boolean result;
-        if (emailField.isDisplayed() && passField.isDisplayed()) result = true;
-        else result = false;
-        return result;
+
+        return (emailField.isDisplayed() && passField.isDisplayed());
     }
 }

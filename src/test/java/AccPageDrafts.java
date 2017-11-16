@@ -20,17 +20,22 @@ public class AccPageDrafts {
 
     public AccPageDrafts(WebDriver driver) {
         this.driver = driver;
-        WebDriverWait wait = new WebDriverWait(this.driver, 10);
-        wait.until(ExpectedConditions.titleContains("Черновики"));
         PageFactory.initElements(this.driver, this);
     }
 
-
-    public void clickLastDraftEmail(String toEmail, String subject) {
+    public boolean clickLastDraftEmail() {
+        boolean foundFlag = false;
         for (WebElement item: listDates) {
-            if (item.getText().equals(dateLastDraft)) item.click();
+            if (item.getText().equals(dateLastDraft)) {
+                item.click();
+                foundFlag = true;
+                break;
+            }
         }
+        return foundFlag;
+    }
 
-
+    public boolean checkAccPageDrafts(){
+        return (driver.getTitle().contains("Черновики"));
     }
 }
