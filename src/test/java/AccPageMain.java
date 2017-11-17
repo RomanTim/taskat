@@ -9,6 +9,8 @@ public class AccPageMain {
 
     @FindBy(partialLinkText = "Написать письмо")
     private WebElement newEmailButton;
+    @FindBy(partialLinkText = "Отправленные")
+    private WebElement sentButton;
     @FindBy(partialLinkText = "Черновики")
     private WebElement draftsButton;
     @FindBy(xpath = "//a[@href='/messages/inbox/']")
@@ -23,9 +25,9 @@ public class AccPageMain {
         PageFactory.initElements(this.driver, this);
     }
 
-    public AccPageNewEmail clickNewEmail(){
+    public AccPageEmail clickNewEmail(){
         newEmailButton.click();
-        return new AccPageNewEmail(driver);
+        return new AccPageEmail(driver);
     }
 
     public AccPageDrafts clickDrafts() {
@@ -33,7 +35,16 @@ public class AccPageMain {
         return new AccPageDrafts(driver);
     }
 
+    public AccPageSent clickSent() {
+        sentButton.click();
+        return new AccPageSent(driver);
+    }
+
     public void clickLogOut() {
         logOutButton.click();
+    }
+
+    public boolean checkAccPageMain(){
+        return (inboxLable.isDisplayed() && logOutButton.isDisplayed());
     }
 }

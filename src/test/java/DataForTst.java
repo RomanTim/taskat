@@ -4,6 +4,7 @@ public class DataForTst {
     private static String toEmail = "testemailepam@inbox.ru";
     private static String subject = "testemail";
     private static String dateLastDraft;
+    private static String dateLastSent;
 
     public static String getEmail(){
         return email;
@@ -27,5 +28,13 @@ public class DataForTst {
 
     public static void setDateLastDraft(String date){
         dateLastDraft =  date;
+    }
+
+    public static String getDateLastSent(){
+        return dateLastSent;
+    }
+
+    public static void setDateLastSent(String date){
+        dateLastSent =  date;
     }
 }
