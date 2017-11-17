@@ -1,0 +1,22 @@
+<suite name="EmailSuite">
+    <test name="testDraft">
+        <groups>
+            <run>
+                <include name="testDraft"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="EmailGroupTest"/>
+        </classes>
+    </test>
+    <test name="testSent">
+    <groups>
+        <run>
+            <include name="testSent"/>
+        </run>
+    </groups>
+    <classes>
+        <class name="EmailGroupTest"/>
+    </classes>
+    </test>
+</suite>
