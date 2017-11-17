@@ -64,9 +64,6 @@ public class AccPageEmail {
 
     public String[] getSentAllField(){
         String[] allFields = emailSentAllFields.getText().split("\n");
-        for (String str:allFields) {
-            System.out.println(str);
-        }
         return allFields;
     }
 
