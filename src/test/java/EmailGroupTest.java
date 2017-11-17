@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import java.util.concurrent.TimeUnit;
 
 public class EmailGroupTest {
@@ -88,9 +87,10 @@ public class EmailGroupTest {
     }
 
     @BeforeClass (groups={"testDraft","testSent"})
-    public void setUp(){
+    public void setUp() {
         System.setProperty("webdriver.chrome.driver", "./webdrivers/chromedriver.exe");
         driver = new ChromeDriver();
+
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(30,TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
